@@ -15,7 +15,7 @@ const NewzContainer = ({ category }) => {
     try {
       setLoading(true)
 
-      const response = await fetch(`${URL}?category=${category}`)
+      const response = await fetch(`${URL}?category=${category}`, { credentials: "include" });
       const data = await response.json()
 
       setNews(data.articles || [])
