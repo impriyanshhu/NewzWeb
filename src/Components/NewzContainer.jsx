@@ -6,7 +6,6 @@ const NewzContainer = ({category}) => {
     const [news, setNews] = useState([]);
     const [loading, setLoading] = useState(false);
     const URL = import.meta.env.VITE_URL;
-    const apikey = import.meta.env.VITE_API_KEY;
 
     useEffect(() => {
         fetchNews();
@@ -14,7 +13,7 @@ const NewzContainer = ({category}) => {
 
     async function fetchNews() {
         setLoading(true)
-        const url = `${URL}${category}&apiKey=${apikey}`;
+        const url = `${URL}?category=${category}`;
         let response = await fetch(url);
         response = await response.json();
         setNews(response.articles);
